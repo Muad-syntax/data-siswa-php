@@ -1,5 +1,5 @@
 <?php
-include "service/koneksi.php";
+include "../service/koneksi.php";
 $sql = "SELECT * FROM tbjurusan";
 
 if (isset($_POST['nama_jurusan']) && !empty($_POST['nama_jurusan'])) {
@@ -19,9 +19,13 @@ $result = mysqli_query($koneksi, $sql);
 </head>
 
 <body>
-    <?php include "layout/header.html" ?>
+    <header>
+        <a href="../index.php">Home</a>
+        <a href="../data/data-siswa.php">Data Siswa</a>
+        <a href="../data/data-jurusan.php">Data Jurusan</a>
+    </header>
     <h3>Tambah data siswa</h3>
-    <form action="service/proses-simpan.php" method="post">
+    <form action="../service/proses-simpan.php" method="post">
         <label for="">Nama</label>
         <input type="text" name="nama" placeholder="masukan nama">
 

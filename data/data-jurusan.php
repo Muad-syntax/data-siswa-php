@@ -1,5 +1,5 @@
 <?php
-include "service/koneksi.php";
+include "../service/koneksi.php";
 
 $sql = "SELECT * FROM tbjurusan";
 
@@ -21,13 +21,17 @@ $result = mysqli_query($koneksi, $sql);
 </head>
 
 <body>
-    <?php include "layout/header.html" ?>
+    <header>
+        <a href="../index.php">Home</a>
+        <a href="data-siswa.php">Data Siswa</a>
+        <a href="#">Data Jurusan</a>
+    </header>
     <h3>Data Jurusan</h3>
     <form action="" method="post">
         <input type="text" placeholder="cari jurusan" name="nama_jurusan" required>
         <button>cari</button>
     </form>
-    <a href="tambah-jurusan.php">Tambah jurusan</a>
+    <a href="../input/tambah-jurusan.php">Tambah jurusan</a>
     <table border="1" cellpadding="8" cellspacing="0" class="table">
         <tr>
             <th>Id</th>

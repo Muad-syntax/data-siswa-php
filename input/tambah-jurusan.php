@@ -1,5 +1,5 @@
 <?php
-include "service/koneksi.php";
+include "../service/koneksi.php";
 if (isset($_POST['nama_jurusan'])) {
     $namaJurusan = $_POST['nama_jurusan'];
 
@@ -26,7 +26,11 @@ if (isset($_POST['nama_jurusan'])) {
 </head>
 
 <body>
-    <?php include "layout/header.html" ?>
+    <header>
+        <a href="../index.php">Home</a>
+        <a href="../data/data-siswa.php">Data Siswa</a>
+        <a href="../data/data-jurusan.php">Data Jurusan</a>
+    </header>
     <h3>Tambah Jurusan</h3>
     <form action="" method="post">
         <label for="nama_jurusan">Jurusan</label>

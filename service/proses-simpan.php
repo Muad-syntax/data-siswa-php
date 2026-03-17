@@ -9,7 +9,7 @@ $query = "INSERT INTO tbsiswa (`nama`,`kelas`, `id_jurusan`) VALUES ('$nama', '$
 $result = mysqli_query($koneksi, $query);
 
 if ($result){
-    header ("Location: ../data-siswa.php");
+    header ("Location: ../data/data-siswa.php");
     exit();
 } else {
     echo 'Gagal menyimpan data: ' . mysqli_error($koneksi);

@@ -1,5 +1,5 @@
 <?php
-include "service/koneksi.php";
+include "../service/koneksi.php";
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
@@ -32,6 +32,11 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
+    <header>
+        <a href="../index.php">Home</a>
+        <a href="../data/data-siswa.php">Data Siswa</a>
+        <a href="../data/data-jurusan.php">Data Jurusan</a>
+    </header>
     <h2>Edit Data Siswa</h2>
     <form action="" method="post">
         <input type="hidden" name="id" value="<?php echo $row['id']; ?>">

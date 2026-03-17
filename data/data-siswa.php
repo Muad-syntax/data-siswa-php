@@ -1,5 +1,5 @@
 <?php
-include "service/koneksi.php";
+include "../service/koneksi.php";
 
 $sql = "SELECT tbsiswa.nama, tbsiswa.kelas, tbjurusan.nama_jurusan, tbsiswa.id FROM `tbsiswa` INNER JOIN tbjurusan ON tbsiswa.id_jurusan = tbjurusan.id";
 
@@ -23,9 +23,13 @@ $result = mysqli_query($koneksi, $sql);
 </head>
 
 <body>
-    <?php include "layout/header.html" ?>
+    <header>
+        <a href="../index.php">Home</a>
+        <a href="#">Data Siswa</a>
+        <a href="data-jurusan.php">Data Jurusan</a>
+    </header>
     <h3>Data Siswa</h3>
-    <a href="tambah-siswa.php">Tambah siswa</a>
+    <a href="../input/tambah-siswa.php">Tambah siswa</a>
     <br><br>
     <form action="" method="post">
         <input type="text" placeholder="cari id" name="id" required>
@@ -54,10 +58,10 @@ $result = mysqli_query($koneksi, $sql);
                     <td><?php echo $row['kelas']; ?></td>
                     <td><?php echo $row['nama_jurusan']; ?></td>
                     <td>
-                        <a href="edit-data.php?id=<?php echo $row['id']; ?>">edit</a>
+                        <a href="../input/edit-data.php?id=<?php echo $row['id']; ?>">edit</a>
                     </td>
                     <td>
-                        <form action="service/proses-hapus.php" method="post">
+                        <form action="../service/proses-hapus.php" method="post">
                             <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                             <button>hapus</button>
                         </form>
