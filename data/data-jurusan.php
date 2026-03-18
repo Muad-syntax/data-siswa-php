@@ -34,11 +34,10 @@ include "../service/proses-selector-data-jurusan.php";
         <br>
         <a href="../input/tambah-jurusan.php" class="button">Tambah jurusan</a>
         <br>
-        <table border="1" cellpadding="8" cellspacing="0" class="table">
+        <table border="1" cellpadding="5" cellspacing="0">
             <tr>
                 <th>Id</th>
                 <th>Jurusan</th>
-                <th>Aksi</th>
                 <th>Detail</th>
             </tr>
             <?php
@@ -49,10 +48,7 @@ include "../service/proses-selector-data-jurusan.php";
                         <td><?php echo $row['id']; ?></td>
                         <td><?php echo $row['nama_jurusan']; ?></td>
                         <td>
-                            <a href="#">Edit</a> | <a href="#">Hapus</a>
-                        </td>
-                        <td>
-                            <a href="#">Detail</a>
+                            <a href="detail.php?id=<?php echo $row['id']; ?>">Detail</a>
                         </td>
                     </tr>
 

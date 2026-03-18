@@ -1,13 +1,14 @@
 *{
-    padding: 0;
-    margin: 0;
-
+    
 }
 body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
 }
 header{
     background-color: rgb(65, 118, 164);
-    padding: 25px;
+    padding: 10px;
 }
 a{
     text-decoration: none;
@@ -53,3 +54,7 @@ form{
     border-radius: 15px;
 }
 
+table {
+    border-collapse: collapse;
+    width: 80%;
+}
