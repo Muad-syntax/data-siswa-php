@@ -9,6 +9,8 @@ body{
 header{
     background-color: rgb(65, 118, 164);
     padding: 10px;
+    display: flex;
+    justify-content: space-between;
 }
 a{
     text-decoration: none;
@@ -16,9 +18,16 @@ a{
 }
 ul{
     display: flex;
-    justify-content: end;
+    align-items: center;
     gap: 15px;
     font-size: 1.5em;
+    
+}
+.name{
+    display: flex;
+    justify-content: end;
+    gap: 15px;
+    font-size: 1.8em;
     
 }
 

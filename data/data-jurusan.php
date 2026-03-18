@@ -1,5 +1,6 @@
 <?php
 include "../service/koneksi.php";
+include "../service/proses-login.php";
 include "../service/proses-selector-data-jurusan.php";
 
 
@@ -17,10 +18,15 @@ include "../service/proses-selector-data-jurusan.php";
 
 <body>
     <header>
+        <ul type="none" class="name">
+            <li><span><?= $_SESSION["username"] ?></span></li>
+        </ul>
         <ul type="none">
             <li><a href="../index.php">Home</a></li>
             <li><a href="data-siswa.php">Data Siswa</a></li>
             <li><a href="#">Data Jurusan</a></li>
+            <li><a href="../login.php">Login</a></li>
+            <li><a href="../register.php">Register</a></li>
         </ul>
     </header>
 

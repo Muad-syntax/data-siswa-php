@@ -1,5 +1,6 @@
 <?php
 include "../service/koneksi.php";
+include "../service/proses-login.php";
 
 $sql = "SELECT * FROM tbjurusan";
 
@@ -24,10 +25,15 @@ $result = mysqli_query($koneksi, $sql);
 
 <body>
     <header>
+        <ul type="none" class="name">
+            <li><span><?= $_SESSION["username"] ?></span></li>
+        </ul>
         <ul type="none">
             <li><a href="../index.php">Home</a></li>
             <li><a href="../data/data-siswa.php">Data Siswa</a></li>
             <li><a href="../data/data-jurusan.php">Data Jurusan</a></li>
+            <li><a href="../login.php">Login</a></li>
+            <li><a href="../register.php">Register</a></li>
         </ul>
     </header>
     <main>
