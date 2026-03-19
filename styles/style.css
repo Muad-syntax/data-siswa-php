@@ -1,69 +1,257 @@
-*{
-    
-}
-body{
+/* =========================================
+   RESET & GLOBAL STYLES
+   ========================================= */
+* {
     margin: 0;
     padding: 0;
-    height: 100vh;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-header{
-    background-color: rgb(65, 118, 164);
-    padding: 10px;
+
+body {
+    background-color: #f4f7f6; /* Warna background abu-abu terang yang clean */
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* =========================================
+   HEADER & NAVIGATION
+   ========================================= */
+header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 1rem 5%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
-a{
+
+header ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    align-items: center;
+}
+
+header a, header span {
     text-decoration: none;
-    color: black;
-}
-ul{
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    font-size: 1.5em;
-    
-}
-.name{
-    display: flex;
-    justify-content: end;
-    gap: 15px;
-    font-size: 1.8em;
-    
+    color: #555;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
 }
 
-main{
+header a:hover {
+    color: #007bff; /* Warna biru profesional saat di-hover */
+}
+
+header .name span {
+    background-color: #e9ecef;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    color: #007bff;
+}
+
+/* =========================================
+   MAIN LAYOUT & TYPOGRAPHY
+   ========================================= */
+main {
+    flex: 1;
+    padding: 3rem 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Memastikan konten di tengah */
+}
+
+h1, h2, h3 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
     text-align: center;
+}
+
+/* =========================================
+   FORMS & CARDS (Login, Register, Add Data)
+   ========================================= */
+main form {
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 400px; /* Ukuran pas untuk card login/register */
     display: flex;
     flex-direction: column;
+    gap: 1rem;
+}
+
+/* Khusus form pencarian (biar gak terlalu tinggi box-nya) */
+main form:has(input[placeholder^="cari"]) {
+    max-width: 500px;
+    padding: 1.5rem;
+    flex-direction: row;
     align-items: center;
-    height: 100vh;
-    background: rgb(92, 166, 230);
-}
-form{
-    display: flex;
-    flex-direction: column;
-    text-align: start;
-    gap: 10px;
-    border: 1px solid;
-    padding: 15px;
-    background-color: rgb(175, 211, 242);
 }
 
-.button{
-    border: 1px solid;
-    padding: 8px;
-    background-color: rgb(175, 211, 242);
-    border-radius: 10px;
-    transition: 0.1s ease-in-out;
+label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: -0.5rem;
 }
-.button:hover{
-    padding: 10px;
+
+input[type="text"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
     cursor: pointer;
-    background-color: rgb(136, 193, 243);
-    border-radius: 15px;
+    transition: background-color 0.3s, transform 0.1s;
+    width: 100%;
 }
 
+button:hover {
+    background-color: #0056b3;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Khusus button di form pencarian */
+main form:has(input[placeholder^="cari"]) button {
+    width: auto;
+}
+
+/* =========================================
+   TABLES & BUTTON LINKS
+   ========================================= */
 table {
+    width: 100%;
+    max-width: 900px;
     border-collapse: collapse;
-    width: 80%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden; /* Biar border radius tabel berfungsi */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    margin-top: 1rem;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
+}
+
+th {
+    background-color: #2c3e50;
+    color: #ffffff;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Tombol Tambah Data & Edit/Detail (Berbentuk Link) */
+a.button, td a {
+    display: inline-block;
+    background-color: #28a745; /* Hijau */
+    color: white;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+a.button:hover, td a:hover {
+    background-color: #218838;
+}
+
+/* Custom styling untuk form hapus di dalam tabel agar tidak berbentuk card */
+td form {
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    background: transparent;
+    width: auto;
+}
+
+td form button {
+    background-color: #dc3545; /* Merah untuk hapus */
+    padding: 0.5rem 1rem;
+    width: auto;
+    font-size: 0.85rem;
+}
+
+td form button:hover {
+    background-color: #c82333;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (Media Queries)
+   ========================================= */
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    header ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    main {
+        padding: 2rem 1rem;
+    }
+
+    /* Membuat tabel bisa di-scroll ke samping di HP */
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    main form:has(input[placeholder^="cari"]) {
+        flex-direction: column;
+    }
+    
+    main form:has(input[placeholder^="cari"]) button {
+        width: 100%;
+    }
 }

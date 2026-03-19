@@ -8,15 +8,13 @@ include "service/proses-login.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="styles/login-register.css?php echo time(); ?>">
     <title>Login</title>
 </head>
 <body>
     <header>
         <ul type="none">
             <li><a href="index.php">Home</a></li>
-            <li><a href="data/data-siswa.php">Data Siswa</a></li>
-            <li><a href="data/data-jurusan.php">Data Jurusan</a></li>
             <li><a href="#">Login</a></li>
             <li><a href="register.php">Register</a></li>
         </ul>

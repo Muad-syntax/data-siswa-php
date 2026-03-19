@@ -2,6 +2,15 @@
 include "../service/koneksi.php";
 include "../service/proses-login.php";
 
+if (!isset($_SESSION["username"])) {
+    echo "halaman khusus admin, silahkan login";
+    die();
+}
+if ($_SESSION["role"] != 'admin'){
+    echo("halaman khusus admin!!");
+    exit();
+}
+
 $sql = "SELECT * FROM tbjurusan";
 
 if (isset($_POST['nama_jurusan']) && !empty($_POST['nama_jurusan'])) {
@@ -19,14 +28,24 @@ $result = mysqli_query($koneksi, $sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/style.css?v=<?php echo time(); ?>">
-    
+
     <title>Tambah Siswa</title>
 </head>
 
 <body>
     <header>
         <ul type="none" class="name">
-            <li><span><?= $_SESSION["username"] ?></span></li>
+            <li>
+                <span>
+                    <?php
+                    if (isset($_SESSION["username"])) {
+                        echo $_SESSION["username"];
+                    } else {
+                        echo "<li><a href='login.php'>Login</a></li>";
+                    }
+                    ?>
+                </span>
+            </li>
         </ul>
         <ul type="none">
             <li><a href="../index.php">Home</a></li>
@@ -34,6 +53,7 @@ $result = mysqli_query($koneksi, $sql);
             <li><a href="../data/data-jurusan.php">Data Jurusan</a></li>
             <li><a href="../login.php">Login</a></li>
             <li><a href="../register.php">Register</a></li>
+            <li><a href="../logout.php">Logout</a></li>
         </ul>
     </header>
     <main>

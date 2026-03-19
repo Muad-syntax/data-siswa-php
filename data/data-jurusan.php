@@ -19,7 +19,17 @@ include "../service/proses-selector-data-jurusan.php";
 <body>
     <header>
         <ul type="none" class="name">
-            <li><span><?= $_SESSION["username"] ?></span></li>
+            <li>
+                <span>
+                    <?php
+                    if (isset($_SESSION["username"])) {
+                        echo $_SESSION["username"];
+                    } else {
+                        echo "<li><a href='login.php'>Login</a></li>";
+                    }
+                    ?>
+                </span>
+            </li>
         </ul>
         <ul type="none">
             <li><a href="../index.php">Home</a></li>
@@ -27,6 +37,7 @@ include "../service/proses-selector-data-jurusan.php";
             <li><a href="#">Data Jurusan</a></li>
             <li><a href="../login.php">Login</a></li>
             <li><a href="../register.php">Register</a></li>
+            <li><a href="../logout.php">Logout</a></li>
         </ul>
     </header>
 
@@ -38,7 +49,11 @@ include "../service/proses-selector-data-jurusan.php";
             <button>cari</button>
         </form>
         <br>
-        <a href="../input/tambah-jurusan.php" class="button">Tambah jurusan</a>
+        <?php
+            if ($_SESSION["role"] == 'admin') {
+                echo "<a href='../input/tambah-jurusan.php' class='button'>Tambah jurusan</a>";
+            }
+        ?>
         <br>
         <table border="1" cellpadding="5" cellspacing="0">
             <tr>
@@ -54,6 +69,7 @@ include "../service/proses-selector-data-jurusan.php";
                         <td><?php echo $row['id']; ?></td>
                         <td><?php echo $row['nama_jurusan']; ?></td>
                         <td>
+
                             <a href="detail.php?id=<?php echo $row['id']; ?>">Detail</a>
                         </td>
                     </tr>

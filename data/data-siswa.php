@@ -19,7 +19,17 @@ include "../service/proses-innerjoin-data-siswa.php";
 <body>
     <header>
         <ul type="none" class="name">
-            <li><span><?= $_SESSION["username"] ?></span></li>
+            <li>
+                <span>
+                    <?php
+                    if (isset($_SESSION["username"])) {
+                        echo $_SESSION["username"];
+                    } else {
+                        echo "<li><a href='login.php'>Login</a></li>";
+                    }
+                    ?>
+                </span>
+            </li>
         </ul>
         <ul type="none">
             <li><a href="../index.php">Home</a></li>
@@ -27,12 +37,17 @@ include "../service/proses-innerjoin-data-siswa.php";
             <li><a href="data-jurusan.php">Data Jurusan</a></li>
             <li><a href="../login.php">Login</a></li>
             <li><a href="../register.php">Register</a></li>
+            <li><a href="../logout.php">Logout</a></li>
         </ul>
     </header>
 
     <main>
         <h3>Data Siswa</h3>
-        <a href="../input/tambah-siswa.php" class="button">Tambah siswa</a>
+        <?php
+        if ($_SESSION["role"] == 'admin') {
+            echo "<a href='../input/tambah-siswa.php' class='button'>Tambah siswa</a>";
+        } 
+        ?>
         <br><br>
         <form action="" method="post">
             <input type="text" placeholder="cari id" name="id" required>
@@ -45,8 +60,6 @@ include "../service/proses-innerjoin-data-siswa.php";
                 <th>nama</th>
                 <th>kelas</th>
                 <th>jurusan</th>
-                <th>edit</th>   
-                <th>hapus</th>   
             </tr>
 
             <?php
@@ -58,16 +71,6 @@ include "../service/proses-innerjoin-data-siswa.php";
                         <td><?php echo $row['nama']; ?></td>
                         <td><?php echo $row['kelas']; ?></td>
                         <td><?php echo $row['nama_jurusan']; ?></td>
-                        <td>
-                            <a href="../input/edit-data.php?id=<?php echo $row['id']; ?>">edit</a>
-                        </td>
-                        <td>
-                            <form action="../service/proses-hapus.php" method="post">
-                                <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-                                <button>hapus</button>
-                            </form>
-                        </td>
-
                     </tr>
 
 

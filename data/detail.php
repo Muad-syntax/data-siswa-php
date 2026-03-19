@@ -1,6 +1,7 @@
 <?php
 include "../service/koneksi.php";
 include "../service/proses-login.php";
+
 // $sql = "SELECT tbsiswa.*,  tbjurusan.nama_jurusan
 //         FROM tbsiswa
 //         INNER JOIN tbjurusan ON tbsiswa.id_jurusan = tbjurusan.id";
@@ -14,6 +15,15 @@ include "../service/proses-login.php";
 // }
 // $result = mysqli_query($koneksi, $sql);
 
+if (!isset($_SESSION['username'])) {
+    echo "halaman khusus admin, silahkan login! ";
+    exit();
+}
+
+if ($_SESSION["role"] != 'admin'){
+    echo("halaman khusus admin!!");
+    exit();
+}
 
 $id_jurusan = $_GET['id'];
 $query = mysqli_query($koneksi, "SELECT * FROM tbjurusan WHERE id ='$id_jurusan'");
@@ -38,7 +48,17 @@ $querySiswa = mysqli_query($koneksi, "SELECT * FROM tbsiswa WHERE id_jurusan ='$
 <body>
     <header>
         <ul type="none" class="name">
-            <li><span><?= $_SESSION["username"] ?></span></li>
+            <li>
+                <span>
+                    <?php
+                    if (isset($_SESSION["username"])) {
+                        echo $_SESSION["username"];
+                    } else {
+                        echo "<li><a href='login.php'>Login</a></li>";
+                    }
+                    ?>
+                </span>
+            </li>
         </ul>
         <ul type="none">
             <li><a href="../index.php">Home</a></li>
@@ -46,6 +66,7 @@ $querySiswa = mysqli_query($koneksi, "SELECT * FROM tbsiswa WHERE id_jurusan ='$
             <li><a href="data-jurusan.php">Data Jurusan</a></li>
             <li><a href="../login.php">Login</a></li>
             <li><a href="../register.php">Register</a></li>
+            <li><a href="../logout.php">Logout</a></li>
         </ul>
     </header>
     <main>

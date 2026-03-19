@@ -18,14 +18,25 @@ include "service/proses-login.php";
 <body>
     <header>
         <ul type="none" class="name">
-            <li><span><?= $_SESSION["username"] ?></span></li>
+            <li>
+                <span>
+                    <?php
+                    if (isset($_SESSION["username"])) {
+                        echo $_SESSION["username"];
+                    } else {
+                        echo "<li><a href='login.php'>Login</a></li>";
+                    }
+                    ?>
+                </span>
+            </li>
         </ul>
         <ul type="none">
             <li><a href="index.php">Home</a></li>
             <li><a href="data/data-siswa.php">Data Siswa</a></li>
             <li><a href="data/data-jurusan.php">Data Jurusan</a></li>
-            <li><a href="login.php">Login</a></li>
+            
             <li><a href="register.php">Register</a></li>
+            <li><a href="logout.php">Logout</a></li>
         </ul>
     </header>
     <main>

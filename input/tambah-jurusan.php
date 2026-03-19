@@ -1,5 +1,18 @@
 <?php
 include "../service/koneksi.php";
+
+session_start();
+
+if (!isset($_SESSION["username"])) {
+    echo "halaman khusus admin, silahkan login";
+    die();
+}
+
+if ($_SESSION["role"] != 'admin'){
+    echo("halaman khusus admin!!");
+    exit();
+}
+
 if (isset($_POST['nama_jurusan'])) {
     $namaJurusan = $_POST['nama_jurusan'];
 
@@ -12,7 +25,6 @@ if (isset($_POST['nama_jurusan'])) {
         echo 'Gagal menyimpan data: ' . mysqli_error($koneksi);
     }
 }
-
 
 
 ?>
@@ -30,7 +42,17 @@ if (isset($_POST['nama_jurusan'])) {
 <body>
     <header>
         <ul type="none" class="name">
-            <li><span><?= $_SESSION["username"] ?></span></li>
+            <li>
+                <span>
+                    <?php
+                    if (isset($_SESSION["username"])) {
+                        echo $_SESSION["username"];
+                    } else {
+                        echo "<li><a href='login.php'>Login</a></li>";
+                    }
+                    ?>
+                </span>
+            </li>
         </ul>
         <ul type="none">
             <li><a href="../index.php">Home</a></li>
@@ -38,6 +60,7 @@ if (isset($_POST['nama_jurusan'])) {
             <li><a href="../data/data-jurusan.php">Data Jurusan</a></li>
             <li><a href="../login.php">Login</a></li>
             <li><a href="../register.php">Register</a></li>
+            <li><a href="../logout.php">Logout</a></li>
         </ul>
     </header>
     <main>
