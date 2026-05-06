@@ -1,6 +1,8 @@
 <?php
 include "koneksi.php";
-
+/**
+ * @var mysqli $koneksi
+ */
 $nama = $_POST['nama'];
 $kelas = $_POST['kelas'];
 $id_jurusan = $_POST['id_jurusan'];

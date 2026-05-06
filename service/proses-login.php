@@ -1,7 +1,9 @@
 <?php
 include "koneksi.php";
 session_start();
-
+/**
+ * @var mysqli $koneksi
+ */
 
 if (isset($_POST['login'])) {
     $username = $_POST['username'];

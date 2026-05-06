@@ -1,5 +1,8 @@
 <?php
 include "koneksi.php";
+/**
+ * @var mysqli $koneksi
+ */
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 

@@ -1,6 +1,8 @@
 <?php
 include "koneksi.php";
-
+/**
+ * @var mysqli $koneksi
+ */
 $sql = "SELECT * FROM tbjurusan";
 
 if (isset($_POST['nama_jurusan']) && !empty($_POST['nama_jurusan'])) {

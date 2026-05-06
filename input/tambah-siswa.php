@@ -1,6 +1,9 @@
 <?php
 include "../service/koneksi.php";
 include "../service/proses-login.php";
+/**
+ * @var mysqli $koneksi
+ */
 
 if (!isset($_SESSION["username"])) {
     echo "halaman khusus admin, silahkan login";

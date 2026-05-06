@@ -2,7 +2,9 @@
 include "../service/koneksi.php";
 include "../service/proses-login.php";
 include "../service/proses-innerjoin-data-siswa.php";
-
+/**
+ * @var mysqli $koneksi
+ */
 
 ?>
 

@@ -1,6 +1,8 @@
 <?php
 include "koneksi.php";
-
+/**
+ * @var mysqli $koneksi
+ */
 $id = $_POST['id'];
 
 if (isset($_POST['id'])) {

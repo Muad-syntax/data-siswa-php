@@ -1,6 +1,8 @@
 <?php
 include "../service/koneksi.php";
-
+/**
+ * @var mysqli $koneksi
+ */
 session_start();
 
 if (!isset($_SESSION["username"])) {
